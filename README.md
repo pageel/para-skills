@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/pageel/para-workspace/main/assets/para-logo.png" alt="PARA Workspace Logo" width="150" />
+  <img src="https://raw.githubusercontent.com/pageel/para-workspace/main/docs/assets/logo.svg" alt="PARA Workspace Logo" width="120" />
   <h1>para-skills 🧠</h1>
   <p><b>Curated AI Agent skills and the <code>/para-skill</code> workflow for PARA Workspace.</b></p>
   
   <p>
-    <a href="README.md"><b>English</b></a> •
-    <a href="README.vi.md"><b>Tiếng Việt</b></a> •
-    <a href="README.zh-CN.md"><b>中文</b></a>
+    <a href="README.md"><b>🇺🇸 English</b></a> •
+    <a href="README.vi.md"><b>🇻🇳 Tiếng Việt</b></a> •
+    <a href="README.zh-CN.md"><b>🇨🇳 中文</b></a>
   </p>
 
   <p>
