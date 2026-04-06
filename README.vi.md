@@ -1,7 +1,20 @@
-# 🧠 para-skills
+<div align="center">
+  <img src="https://raw.githubusercontent.com/pageel/para-workspace/main/assets/para-logo.png" alt="PARA Workspace Logo" width="150" />
+  <h1>para-skills 🧠</h1>
+  <p><b>Bộ kỹ năng AI Agent và workflow <code>/para-skill</code> cho PARA Workspace.</b></p>
+  
+  <p>
+    <a href="README.md"><b>English</b></a> •
+    <a href="README.vi.md"><b>Tiếng Việt</b></a> •
+    <a href="README.zh-CN.md"><b>中文</b></a>
+  </p>
 
-> Bộ kỹ năng AI Agent và workflow `/para-skill` cho [PARA Workspace](https://github.com/pageel/para-workspace).
+  <p>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  </p>
+</div>
 
+<br/>
 ## Tổng quan
 
 **para-skills** cung cấp:

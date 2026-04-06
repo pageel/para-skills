@@ -1,8 +1,31 @@
-# 🧠 para-skills
+<div align="center">
+  <img src="https://raw.githubusercontent.com/pageel/para-workspace/main/assets/para-logo.png" alt="PARA Workspace Logo" width="150" />
+  <h1>para-skills 🧠</h1>
+  <p><b>Curated AI Agent skills and the <code>/para-skill</code> workflow for PARA Workspace.</b></p>
+  
+  <p>
+    <a href="README.md"><b>English</b></a> •
+    <a href="README.vi.md"><b>Tiếng Việt</b></a> •
+    <a href="README.zh-CN.md"><b>中文</b></a>
+  </p>
 
-> Curated AI Agent skills and the `/para-skill` workflow for [PARA Workspace](https://github.com/pageel/para-workspace).
+  <p>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  </p>
+</div>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<br/>
+## Table of Contents
+- [Overview](#overview)
+- [Documentation](#-documentation)
+- [Quick Start](#-quick-start)
+- [What's Included](#-whats-included)
+- [The Skill Lifecycle](#-the-skill-lifecycle)
+- [Workflow Actions](#-workflow-actions)
+- [Skill Templates](#-skill-templates)
+- [Quality Checklist (27 Points)](#-quality-checklist-27-points)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## Overview
 
@@ -11,6 +34,12 @@
 1. **`/para-skill` workflow** — A Co-Author engine that guides you through creating, validating, and testing AI Agent skills
 2. **Skill templates** — Ready-to-use templates for common skill types (project-profile, tool/utility)
 3. **Quality checklist** — A 27-point framework (including Sandbox Testing) for ensuring skill quality
+
+## 📖 Documentation
+
+- [**Skill Development Guide**](docs/skill-development-guide.md) — How to create, validate, and Sandbox test a skill.
+- [**Architecture**](docs/architecture.md) — System overview, content zoning, and data flow.
+
 
 ## 🚀 Quick Start
 
