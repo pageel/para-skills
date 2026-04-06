@@ -1,11 +1,11 @@
 # para-skills — Skill Catalog
 # Registry of available skills for PARA Workspace
-# Version: 0.1.0
+# Version: 0.2.0
 
 skills:
   para-skill:
     name: "para-skill"
-    version: "0.1.0"
+    version: "0.2.0"
     description: "Workflow to manage, create, and validate AI Agent skills with Co-Author engine"
     path: "skills/para-skill/para-skill.md"
     type: "workflow"

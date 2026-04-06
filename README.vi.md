@@ -8,7 +8,7 @@
 
 1. **Workflow `/para-skill`** — Trình Co-Author hướng dẫn tạo, kiểm tra và test các skill cho AI Agent
 2. **Skill templates** — Template sẵn sàng cho các loại skill phổ biến (project-profile, tool/utility)
-3. **Quality checklist** — Bộ 24 tiêu chí đánh giá chất lượng skill
+3. **Quality checklist** — Bộ 27 tiêu chí đánh giá chất lượng skill (đã bao gồm Sandbox Test)
 
 ## Bắt đầu nhanh
 

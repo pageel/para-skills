@@ -90,6 +90,16 @@ description: "Skill about project conventions"
 
 ---
 
+## VII. Test Mode Readiness
+
+| #   | Check                          | Rule                                                          |
+|:----|:-------------------------------|:--------------------------------------------------------------|
+| TM1 | **Test Mode section exists**   | MUST have "## 🧪 Test Mode (Sandbox Override)" section        |
+| TM2 | **Containment path defined**   | MUST specify sandbox output directory                         |
+| TM3 | **Report template included**   | MUST describe `test-report.md` structure                      |
+
+---
+
 ## Usage
 
 ### In `/para-skill validate [name]`:
@@ -103,7 +113,8 @@ C1-C4: Content Structure  — 4/4
 W1-W5: Writing Style      — 4/5 (W3: missing example)
 B1-B3: Bundled Resources  — 3/3
 T1-T3: Test Readiness     — 3/3
-Result: 22/24 pass | 2 warnings
+TM1-TM3: Test Mode        — 3/3
+Result: 25/27 pass | 2 warnings
 ```
 
 ### In `/para-skill add [name]`:

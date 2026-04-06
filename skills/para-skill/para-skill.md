@@ -230,9 +230,9 @@ Check a skill for PARA + quality compliance without making changes.
 | P4 | Naming | Is the folder `kebab-case`? |
 | P5 | Version | Is version SemVer format? |
 
-**Quality (D1-D4, C1-C4, W1-W5, B1-B3, T1-T3):**
+**Quality (D1-D4, C1-C4, W1-W5, B1-B3, T1-T3, TM1-TM3):**
 
-Run all 24 checks from `skill-quality-checklist.md`.
+Run all 27 checks from `skill-quality-checklist.md`.
 
 4. Output compliance report:
 
@@ -244,7 +244,8 @@ C1-C4: Content Structure  — 4/4
 W1-W5: Writing Style      — 5/5
 B1-B3: Bundled Resources  — 3/3
 T1-T3: Test Readiness     — 2/3 (T2: missing expected output)
-Result: 22/24 pass | 2 warnings
+TM1-TM3: Test Mode        — 3/3
+Result: 25/27 pass | 2 warnings
 Tip: Run /para-skill standardize [name] to fix.
 ```
 
@@ -279,12 +280,25 @@ The agent reads `.agents/skills/[name]/SKILL.md` and applies fixes for each item
 
 ## Action: test [name]
 
-Run a conversational eval on a skill using user-provided test prompts.
+Evaluate a skill's compliance and effectiveness. Supports either a fast conversational simulation or a rigorous execution via Sandbox + Open Agent Manager.
 
 ### Steps
 
 1. Read `.agents/skills/[name]/SKILL.md`.
-2. Ask user for **2-3 realistic test prompts** — the kind of thing a real user would actually say:
+2. Ask the user to select the evaluation mode:
+
+```
+🧪 TEST MODE SELECTION: [skill-name]
+  A. Quick Eval   — Simulate in this chat (fast, subjective eval)
+  B. Sandbox Eval — Run via Open Agent Manager (real execution, documented)
+Which mode? (A/B)
+```
+
+### Mode A: Quick Eval
+
+If user selects A (Quick Eval):
+
+1. Ask user for **2-3 realistic test prompts** — the kind of thing a real user would actually say:
 
 ```
 CONVERSATIONAL EVAL: [name]
@@ -294,17 +308,15 @@ These should be realistic user requests, not synthetic tests.
 Example for a project-profile skill:
   1. "Create a plan to add authentication to this project"
   2. "Name the branch for the new payment feature"
-  3. "What test commands should I run after my changes?"
 
 Your test prompts:
 ```
 
-3. For each test prompt, **simulate** skill behavior:
-   - Load the skill's SKILL.md into context
-   - Process the test prompt as if the skill were active
-   - Generate the output the agent would produce
+2. For each test prompt, **simulate** skill behavior:
+   - Process the test prompt as if the skill were active.
+   - Generate the output the agent would produce.
 
-4. After each simulation, ask user to evaluate:
+3. After each simulation, ask user to evaluate:
 
 ```
 TEST RESULT: Prompt [N]
@@ -315,22 +327,82 @@ Rate: Pass | Needs work | Fail
 Notes:
 ```
 
-5. Aggregate results:
+4. Aggregate results and suggest standardizing if failed.
+
+
+### Mode B: Sandbox Eval
+
+If user selects B (Sandbox Eval):
+
+// turbo
+
+1. Prepare the sandbox boundary:
+
+```bash
+mkdir -p sandbox/evals/[name]-$(date +%Y-%m-%d)
+```
+
+2. Guide the user to run the skill via Open Agent Manager:
 
 ```
-EVAL SUMMARY: [name]
-| # | Prompt (truncated)     | Result |
-|---|------------------------|--------|
-| 1 | "Create a plan to..."  | Pass   |
-| 2 | "Name the branch..."   | Warn   |
-| 3 | "What test commands..." | Pass   |
-Pass rate: 2/3 (67%)
+📋 SANDBOX EVAL SETUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Open the "Open Agent Manager" panel and COPY-PASTE this entire block into the chat:
 
-Suggestion: Revise section to include more patterns.
-Run /para-skill standardize [name] after edits.
+```text
+Read and apply this skill file first:
+[Absolute path to .agents/skills/[name]/SKILL.md]
+
+After loading the rules, execute the following:
+Test Mode: [enter your test scenario here, e.g., 'create a new branch']
 ```
 
-6. If user wants to iterate, loop back to step 3 with revised SKILL.md.
+Wait for the Agent to complete and generate the test-report.md.
+Come back here and type: "conclude test"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Sandbox ready at: sandbox/evals/[name]-[date]/
+```
+
+3. **Wait for user to type "conclude test".**
+
+// turbo
+
+4. When the user types "conclude test", find the sandbox output and test report:
+
+```bash
+# Check if test report exists
+test -f sandbox/evals/[name]-$(date +%Y-%m-%d)/test-report.md && cat sandbox/evals/[name]-$(date +%Y-%m-%d)/test-report.md || echo "test-report.md not found"
+```
+
+5. Read the generated artifacts. Assess whether the Agent obeyed the structural rules of the SKILL.md.
+6. Format the assessment into the `/research` Process template.
+7. Save the research document and update the docs index:
+
+```bash
+mkdir -p docs/researches
+mv sandbox/evals/[name]-$(date +%Y-%m-%d)/test-report.md docs/researches/eval-[name]-$(date +%Y-%m-%d).md
+# Remind user to update docs/README.md manually or agent appends it
+```
+
+*(Agent also checks index and updates if needed).*
+
+8. Clean up the sandbox container:
+
+```bash
+# Clean up extra artifacts
+rm -rf sandbox/evals/[name]-$(date +%Y-%m-%d)/
+```
+
+9. Final Report:
+
+```
+🧪 SANDBOX EVAL COMPLETE: [skill-name]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📄 Research saved: docs/researches/eval-[name]-[date].md
+📊 Rules compliance: [Pass / Fail]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 Next: /para-skill validate [name]
+```
 
 ---
 

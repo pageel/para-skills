@@ -88,7 +88,7 @@ Creates a **utility/automation** skill with:
 - Edge case handling
 - Script and reference bundling
 
-## 🔍 Quality Checklist (24 Points)
+## 🔍 Quality Checklist (27 Points)
 
 | Group | Points | What it checks |
 |:------|:-------|:---------------|
@@ -98,6 +98,7 @@ Creates a **utility/automation** skill with:
 | W1-W5 | Writing Style | Explain why, imperative, examples, scope, safety |
 | B1-B3 | Resources | Scripts, references, assets organization |
 | T1-T3 | Test Readiness | Test prompts, expected output, testability type |
+| TM1-TM3| Test Mode      | Sandbox overrides, containment paths, report templates |
 
 ## 🤝 Contributing
 

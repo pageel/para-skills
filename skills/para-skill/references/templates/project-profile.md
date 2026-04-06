@@ -107,6 +107,35 @@ Pattern: `[describe your commit message format]`
 - [ ] **Plan size:** < 200 lines for release plan, < 300 for complex multi-feature
 - [ ] **No duplicate info:** Architecture overview doesn't repeat task details
 - [ ] **References over repetition:** Large sections link to separate files
+
+## 🧪 Test Mode (Sandbox Override)
+
+> **Trigger:** User includes "Test Mode" or explicitly asks to evaluate/test this skill.
+
+When in Test Mode, STRICTLY follow these overrides:
+
+1. **No Live Edits:** Do NOT modify files outside the sandbox directory.
+2. **Containment:** Route ALL outputs into `[PROJECT_ROOT]/sandbox/evals/[skill-name]-[YYYY-MM-DD]/`.
+   *(Where `[PROJECT_ROOT]` is the project containing this skill)*
+3. **Execute Task:** Carry out the user's prompt as if this skill were active in production.
+4. **Generate Report:** After completing the task, create `test-report.md` in the sandbox folder:
+
+   \```markdown
+   # Test Report: [skill-name]
+   > Date: YYYY-MM-DD | Prompt: "[user's prompt]"
+   
+   ## Actions Taken
+   - [List each action performed]
+   
+   ## Skill Rules Invoked
+   - [Which sections of the skill were applied, e.g., "§2 Naming Conventions"]
+   
+   ## Files Created
+   - [List files created in sandbox/]
+   
+   ## Self-Assessment
+   - [Did the skill provide useful guidance? What was ambiguous?]
+   \```
 ```
 
 ---
