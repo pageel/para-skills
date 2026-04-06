@@ -60,7 +60,12 @@ Pattern: `[describe your commit message format]`
 
 ## §3. Maintenance Patterns
 
-> Add project-specific checklists here that don't belong in global rules.
+### VCS Guardrails 🛡️
+
+> **Trigger:** Before any raw `git commit` or `git push` command outside of `/push` or `/release` workflows.
+- MUST explicitly re-read `.agents/rules/vcs.md` to ensure golden rule compliance, prevent secrets pushing, and enforce branch standards.
+
+> Add additional project-specific checklists here that don't belong in global rules.
 > Reference existing rules instead of duplicating content.
 
 ## §4. Quality Standards
