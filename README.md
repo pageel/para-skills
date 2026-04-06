@@ -10,7 +10,7 @@
 
 1. **`/para-skill` workflow** — A Co-Author engine that guides you through creating, validating, and testing AI Agent skills
 2. **Skill templates** — Ready-to-use templates for common skill types (project-profile, tool/utility)
-3. **Quality checklist** — A 24-point framework for ensuring skill quality
+3. **Quality checklist** — A 27-point framework (including Sandbox Testing) for ensuring skill quality
 
 ## 🚀 Quick Start
 
@@ -51,10 +51,38 @@ skills/
 └── para-skill/
     ├── para-skill.md              # The workflow (6 actions)
     └── references/
-        ├── skill-quality-checklist.md   # 24-point quality framework
+        ├── skill-quality-checklist.md   # 27-point quality framework
         └── templates/
             ├── project-profile.md  # Project DNA template
             └── tool-skill.md       # Utility/automation template
+```
+
+## 🔄 The Skill Lifecycle
+
+Developing an AI Agent skill requires discipline to ensure it doesn't cause hallucination or execute destructive actions. The `/para-skill` workflow enforces this lifecycle:
+
+```mermaid
+graph TD
+    A[Identify Need] -->|/para-skill add| B(Draft SKILL.md)
+    B -->|Co-Author Engine| C{User Review}
+    C -->|Edit/Feedback| B
+    C -->|Approve| D[Save to Workspace]
+    
+    D -->|/para-skill validate| E{27-Point Check}
+    E -->|Warn / Fail| F[Auto-Fix via /standardize]
+    F --> D
+    
+    E -->|Pass 100%| G[Integration Testing]
+    G -->|/para-skill test| H(Mode A: Quick Eval)
+    G -->|/para-skill test| I(Mode B: Sandbox Eval)
+    
+    H -.->|Refine Logic| B
+    I -->|Strict Containment| J[test-report.md]
+    
+    J -->|Pass| K((Release to Team/OSS))
+    
+    classDef primary fill:#2ea44f,stroke:#2ea44f,color:#fff,rx:5px,ry:5px;
+    class K primary;
 ```
 
 ## 🛠 Workflow Actions
