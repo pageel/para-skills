@@ -5,7 +5,7 @@
   
   <p>
     <a href="README.md"><b>🇺🇸 English</b></a> •
-    <a href="docs/locales/vi.md"><b>🇻🇳 Tiếng Việt</b></a> •
+    <a href="docs/locales/vi-VN.md"><b>🇻🇳 Tiếng Việt</b></a> •
     <a href="docs/locales/zh-CN.md"><b>🇨🇳 中文</b></a>
   </p>
 
@@ -29,7 +29,7 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Overview
+## 🎯 Overview
 
 **para-skills** provides:
 

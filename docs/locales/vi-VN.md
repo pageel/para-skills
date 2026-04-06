@@ -5,7 +5,7 @@
   
   <p>
     <a href="../../README.md"><b>🇺🇸 English</b></a> •
-    <a href="vi.md"><b>🇻🇳 Tiếng Việt</b></a> •
+    <a href="vi-VN.md"><b>🇻🇳 Tiếng Việt</b></a> •
     <a href="zh-CN.md"><b>🇨🇳 中文</b></a>
   </p>
 
@@ -16,7 +16,7 @@
 
 <br/>
 
-## Tổng quan
+## 🎯 Tổng quan
 
 **para-skills** cung cấp:
 
