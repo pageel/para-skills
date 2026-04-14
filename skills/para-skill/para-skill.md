@@ -1,23 +1,29 @@
 ---
 description: Manage, create, and validate AI Agent skills with quality-driven Co-Author engine
+source: catalog
 ---
 
 # /para-skill [action] [name]
 
-> **Workspace Version:** 1.7.5 (Governed Libraries)
+> **Workspace Version:** 1.7.6.3 (Governed Libraries)
+
+> **Sidecar Architecture:** This workflow contains LOGIC ONLY. All supporting data
+> (templates, checklists) is stored in the companion skill at
+> `.agents/skills/para-skill/`. See `SKILL.md` §3 Resource Router for paths.
+> The legacy `workflows/para-skill/` subfolder has been removed.
 
 Specialized workflow to manage, create, and validate AI Agent skills within a PARA Workspace. Integrates a Co-Author engine that interviews users and applies quality best practices during skill creation.
 
 ## Actions
 
-| Action        | Description                                                          |
-| :------------ | :------------------------------------------------------------------- |
-| `list`        | Compare active skills vs. governed catalog                           |
-| `add`         | Create a new skill via guided Co-Author interview                    |
-| `install`     | Install or update a skill from the governed catalog                  |
-| `validate`    | Check a skill for PARA + quality compliance without making changes   |
-| `standardize` | Upgrade an existing skill to current standards                       |
-| `test`        | Run conversational eval on a skill with user-provided test prompts   |
+| Action | Description |
+| :-- | :-- |
+| `list` | Compare active skills vs. governed catalog |
+| `add` | Create a new skill via guided Co-Author interview |
+| `install` | Install or update a skill from the governed catalog |
+| `validate` | Check a skill for PARA + quality compliance without making changes |
+| `standardize` | Upgrade an existing skill to current standards |
+| `test` | Run conversational eval on a skill with user-provided test prompts |
 
 ---
 
@@ -41,8 +47,8 @@ echo ""
 
 **Step 3.** Read `catalog.yml` from the governed catalog source (priority order):
 
-1. `Projects/para-workspace/repo/templates/common/agents/skills/catalog.yml`
-2. `Resources/references/para-workspace/templates/common/agents/skills/catalog.yml`
+1. `Projects/[ecosystem-project-name]/repo/templates/common/agents/skills/catalog.yml`
+2. `Resources/references/templates/common/agents/skills/catalog.yml`
 
 **Step 4.** Display comparison report:
 
@@ -67,11 +73,11 @@ Create a new skill via the **Co-Author Engine** — a guided process that produc
 
 ### Templates
 
-| Template    | Flag                  | Use case                                          |
-| :---------- | :-------------------- | :------------------------------------------------ |
-| `project`   | `--template project`  | Project DNA — conventions, naming, plan checklists |
-| `tool`      | `--template tool`     | Utility/automation — scripts, file ops, transforms |
-| _(default)_ | _(no flag)_           | Minimal — frontmatter + empty body                |
+| Template | Flag | Use case |
+| :-- | :-- | :-- |
+| `project` | `--template project` | Project DNA — conventions, naming, plan checklists |
+| `tool` | `--template tool` | Utility/automation — scripts, file ops, transforms |
+| _(default)_ | _(no flag)_ | Minimal — frontmatter + empty body |
 
 ### Steps
 
@@ -114,7 +120,7 @@ Which template? (1/2/3)
 
 **If template = `project`:**
 
-Read the project-profile template from `references/templates/project-profile.md`.
+Read the project-profile template from `.agents/skills/para-skill/references/templates/project-profile.md`.
 Fill all sections (§1-§6) based on scanned context:
 - §1-§5: Fill directly from collected data
 - §6: Extract checklist items from project rules + add standard checks
@@ -122,7 +128,7 @@ Fill all sections (§1-§6) based on scanned context:
 
 **If template = `tool`:**
 
-Read the tool-skill template from `references/templates/tool-skill.md`.
+Read the tool-skill template from `.agents/skills/para-skill/references/templates/tool-skill.md`.
 Fill based on user's original command intent.
 
 **Phase C: Present for approval** (user decides):
@@ -151,7 +157,7 @@ ask 3-5 core questions:
 
 #### Step 3: Write SKILL.md
 
-1. Read `references/skill-quality-checklist.md`
+1. Read `.agents/skills/para-skill/references/skill-quality-checklist.md`
 2. Draft the `SKILL.md` based on interview answers
 3. Self-review against the quality checklist before presenting to user:
    - D1-D4: Is the description pushy enough?
@@ -217,7 +223,7 @@ Check a skill for PARA + quality compliance without making changes.
 // turbo
 
 1. Read `.agents/skills/[name]/SKILL.md`.
-2. Read `references/skill-quality-checklist.md`.
+2. Read `.agents/skills/para-skill/references/skill-quality-checklist.md`.
 3. Run the **Dual Checklist** (read-only mode):
 
 **PARA Structure (P1-P5):**
@@ -259,15 +265,15 @@ Upgrade an existing skill to current quality standards.
 
 The agent reads `.agents/skills/[name]/SKILL.md` and applies fixes for each item:
 
-| #   | Check                    | Rule                                                           |
-|:----|:-------------------------|:---------------------------------------------------------------|
-| 1   | **YAML Frontmatter**     | Must have `name`, `description`, `version`                     |
-| 2   | **Description Quality**  | Must be >= 20 words, include trigger context, be "pushy"       |
-| 3   | **Progressive Disclosure** | Body must be < 500 lines; overflow to `references/`          |
-| 4   | **Writing Style**        | Use imperative form, explain "why", include examples           |
-| 5   | **No Absolute Paths**    | Remove any hardcoded filesystem paths                          |
-| 6   | **Naming Convention**    | Folder must be `kebab-case`, files lowercase                   |
-| 7   | **Index Entry**          | Must have matching entry in `.agents/skills.md`                |
+| # | Check | Rule |
+| :-- | :-- | :-- |
+| 1 | **YAML Frontmatter** | Must have `name`, `description`, `version` |
+| 2 | **Description Quality** | Must be >= 20 words, include trigger context, be "pushy" |
+| 3 | **Progressive Disclosure** | Body must be < 500 lines; overflow to `references/` |
+| 4 | **Writing Style** | Use imperative form, explain "why", include examples |
+| 5 | **No Absolute Paths** | Remove any hardcoded filesystem paths |
+| 6 | **Naming Convention** | Folder must be `kebab-case`, files lowercase |
+| 7 | **Index Entry** | Must have matching entry in `.agents/skills.md` |
 
 ### Execution
 

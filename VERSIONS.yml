@@ -1,0 +1,13 @@
+project: "para-skills"
+version: "0.3.0"
+updated_at: "2026-04-14"
+
+components:
+  para-skill: "1.0.0"
+  catalog: "1.0.0"
+
+changelog:
+  v0.3.0: 
+    - "Feature: Migrated /para-skill workflow and Sidecar Skill to OSS."
+    - "Docs: Added Installation & Usage to SKILL.md."
+    - "Fix: Standardized ecosystem project paths."
